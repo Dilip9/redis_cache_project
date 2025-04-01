@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Users_record")
+@Table(name="Users", indexes = {@Index(name = "UNIQUE_EMAIL", columnList = "email", unique = true)})
 public class Users implements Serializable {
 
     @Id
@@ -17,7 +17,7 @@ public class Users implements Serializable {
     private String username;
 
     @Column(unique = true)
-    private String email;
+    private String emailId;
 
     @Column(name="created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -52,12 +52,12 @@ public class Users implements Serializable {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailId() {
+        return emailId;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.emailId = email;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -81,11 +81,10 @@ public class Users implements Serializable {
         return "Users{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
+                ", email='" + emailId + '\'' +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
     }
-
 
 }

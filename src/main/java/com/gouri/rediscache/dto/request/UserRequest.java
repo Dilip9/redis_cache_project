@@ -6,5 +6,5 @@ import jakarta.validation.constraints.NotNull;
 
 public record UserRequest(Long id,
                           @NotNull String username,
-                          @Email @Column(unique = true) String email) {
+                          @Email @Column(unique = true) String emailId) {
 }

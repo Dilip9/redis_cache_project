@@ -5,8 +5,12 @@ import com.gouri.rediscache.dto.response.UserResponse;
 import com.gouri.rediscache.service.UserService;
 
 public class UserServiceImpl implements UserService {
+
+
+
     @Override
     public UserResponse createUsers(UserRequest usersDto) {
-        return null;
+
+        return
     }
 }
