@@ -4,6 +4,7 @@ import com.gouri.rediscache.dto.ProductDto;
 import com.gouri.rediscache.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,26 +18,24 @@ public class ProductController {
     }
 
     @PostMapping
-    @ResponseStatus(value = HttpStatus.CREATED)
-    public ProductDto createProduct(@RequestBody @Valid ProductDto productDto) {
-        return productService.createProduct(productDto);
+    public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto productDto) {
+        return ResponseEntity.ok(productService.createProduct(productDto));
     }
 
     @GetMapping("/{productId}")
-    @ResponseStatus(value = HttpStatus.OK)
-    public ProductDto getProduct(@PathVariable Long productId) {
-        return productService.getProduct(productId);
+    public ResponseEntity<ProductDto> getProduct(@PathVariable Long productId) {
+        return ResponseEntity.ok(productService.getProduct(productId));
     }
 
     @PutMapping
     @ResponseStatus(value = HttpStatus.OK)
-    public ProductDto updateProduct(@RequestBody @Valid ProductDto productDto) {
-        return productService.updateProduct(productDto);
+    public ResponseEntity<ProductDto> updateProduct(@RequestBody @Valid ProductDto productDto) {
+        return ResponseEntity.ok(productService.updateProduct(productDto));
     }
 
     @DeleteMapping("/{productId}")
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable Long productId) {
+    public ResponseEntity<?> deleteProduct(@PathVariable Long productId) {
         productService.deleteProduct(productId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted Deleted Successfully");
     }
 }
