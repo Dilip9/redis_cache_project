@@ -1,7 +1,7 @@
 package com.gouri.rediscache.controller;
 
 import com.gouri.rediscache.dto.ProductDto;
-import com.gouri.rediscache.service.ProductService;
+import com.gouri.rediscache.service.serviceImpl.ProductServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/product")
 public class ProductController {
 
-    private final ProductService productService;
+    private final ProductServiceImpl productService;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductServiceImpl productService) {
         this.productService = productService;
     }
 

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gouri.rediscache.dto.ProductDto;
 import com.gouri.rediscache.entity.Product;
 import com.gouri.rediscache.repository.ProductRepository;
-import com.gouri.rediscache.service.ProductService;
+import com.gouri.rediscache.service.serviceImpl.ProductServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -76,7 +76,7 @@ class RedisCacheApplicationTests {
         Assertions.assertTrue(productRepository.findById(productId).isPresent());
 
         // Step 3: Check Cache
-        Cache cache = cacheManager.getCache(ProductService.PRODUCT_CACHE);
+        Cache cache = cacheManager.getCache(ProductServiceImpl.PRODUCT_CACHE);
         assertNotNull(cache);
         assertNotNull(cache.get(productId, ProductDto.class));
     }
@@ -124,7 +124,7 @@ class RedisCacheApplicationTests {
                 .andExpect(jsonPath("$.price").value(550.0));
 
         // Step 3: Verify Cache is Updated
-        Cache cache = cacheManager.getCache(ProductService.PRODUCT_CACHE);
+        Cache cache = cacheManager.getCache(ProductServiceImpl.PRODUCT_CACHE);
         assertNotNull(cache);
         ProductDto cachedProduct = cache.get(product.getId(), ProductDto.class);
         assertNotNull(cachedProduct);
@@ -147,7 +147,7 @@ class RedisCacheApplicationTests {
         Assertions.assertFalse(productRepository.findById(product.getId()).isPresent());
 
         // Step 4: Check Cache Eviction
-        Cache cache = cacheManager.getCache(ProductService.PRODUCT_CACHE);
+        Cache cache = cacheManager.getCache(ProductServiceImpl.PRODUCT_CACHE);
         assertNotNull(cache);
         Assertions.assertNull(cache.get(product.getId()));
     }

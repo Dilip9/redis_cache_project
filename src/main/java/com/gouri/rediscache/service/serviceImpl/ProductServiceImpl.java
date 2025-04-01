@@ -1,4 +1,4 @@
-package com.gouri.rediscache.service;
+package com.gouri.rediscache.service.serviceImpl;
 
 import com.gouri.rediscache.dto.ProductDto;
 import com.gouri.rediscache.entity.Product;
@@ -9,12 +9,12 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductService {
+public class ProductServiceImpl {
 
     public static final String PRODUCT_CACHE = "products";
     private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
