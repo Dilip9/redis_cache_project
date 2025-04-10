@@ -1,12 +1,14 @@
 package com.gouri.rediscache.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="Users", indexes = {@Index(name = "UNIQUE_EMAIL", columnList = "email", unique = true)})
+@Builder
 public class Users implements Serializable {
 
     @Id

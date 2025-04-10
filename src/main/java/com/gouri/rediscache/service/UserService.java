@@ -2,9 +2,11 @@ package com.gouri.rediscache.service;
 
 import com.gouri.rediscache.dto.request.UserRequest;
 import com.gouri.rediscache.dto.response.UserResponse;
+import com.gouri.rediscache.entity.Users;
 
 public interface UserService {
 
-    public UserResponse createUsers(UserRequest usersDto );
+    Users createUsers(UserRequest usersDto );
 
+    Users updateUsersProfileByEmailId(String email);
 }
