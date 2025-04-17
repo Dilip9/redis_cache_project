@@ -4,7 +4,9 @@ import com.gouri.rediscache.dto.request.UserRequest;
 import com.gouri.rediscache.entity.Users;
 import com.gouri.rediscache.repository.UsersRepository;
 import com.gouri.rediscache.service.UserService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UsersRepository usersRepository;

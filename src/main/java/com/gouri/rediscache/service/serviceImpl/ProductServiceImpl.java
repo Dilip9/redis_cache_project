@@ -23,10 +23,12 @@ public class ProductServiceImpl {
         var product = new Product();
         product.setName(productDto.name());
         product.setPrice(productDto.price());
+        product.setDescription(productDto.description());
+        product.setImageUrl(productDto.imageUrl());
 
         Product savedProduct = productRepository.save(product);
         return new ProductDto(savedProduct.getId(), savedProduct.getName(),
-                savedProduct.getPrice());
+                savedProduct.getPrice(), savedProduct.getDescription(),savedProduct.getImageUrl(), savedProduct.getCreatedAt(), savedProduct.getUpdatedAt());
     }
 
     @Cacheable(value = PRODUCT_CACHE, key = "#productId")
